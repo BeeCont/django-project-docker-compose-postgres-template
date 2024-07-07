@@ -15,7 +15,7 @@ To use a template from this repository, follow these steps:
 
 1. Clone the template repository to your local machine:
     ```bash
-    git clone --branch branch_name --single-branch https://github.com/username/repo.git
+    git clone --branch branch_name --single-branch https://github.com/BeeCont/django-project-templates.git
     cd template-repo
     ```
 
@@ -50,11 +50,11 @@ To use a template from this repository, follow these steps:
 
 Here is a list of available templates, along with their descriptions:
 
-### Main Branch
+<!--### Main Branch
 - **Basic Django Project**: A minimal Django project setup.
-
+-->
 ### ecommerce-microservice-docker-postgres-poetry-restapi
-- **E-commerce Microservice**: A template for an e-commerce site using microservices architecture with Docker, PostgreSQL, Makefile, Poetry, and REST API.
+- **E-commerce Microservice**: A template for an e-commerce site using microservices architecture with Docker, PostgreSQL, Makefile, Poetry.
 
 <!--## Contributing
 
@@ -70,6 +70,5 @@ Feel free to reach out if you have any questions or need assistance:
 
 - **Email**: [your-email@example.com](mailto:your-email@example.com)
 - **GitHub**: [your-username](https://github.com/your-username)
-
-Happy coding!
 -->
+Happy coding!
