@@ -1,75 +1,74 @@
-# Django Project Templates
+# ecommerce-docker-postgresql-makefile-poetry-template
 
-Welcome to the Django Project Templates repository! This repository contains a collection of Django project templates designed to help you get started quickly with different types of projects. Whether you're building an e-commerce site, a blog, or a microservice-based application, you'll find a suitable template here.
+This project template use Django for the backend, Docker for containerization, Poetry for dependency management, Docker Compose for orchestration, and Makefile for simplifying development tasks.
 
-## Getting Started
+## Key Technologies
 
-To use a template from this repository, follow these steps:
+- **Django**: Web framework for backend development.
+- **Docker**: Platform for containerizing applications.
+- **PostgreSQL**: Open-source object-relational database system.
+- **Poetry**: Tool for dependency management and packaging Python projects.
+- **Docker Compose**: Tool for orchestrating multi-container Docker applications.
+- **Makefile**: Automation of frequently used commands.
 
-### 1. Create a New Repository on GitHub
+## Installation and Setup
 
-1. Go to [GitHub](https://github.com) and create a new empty repository.
-2. Copy the URL of the new repository (e.g., `https://github.com/your-username/new-repo.git`).
+1. **Clone the Repository**
 
-### 2. Clone the Template Repository
+```bash
+git clone --branch ecommerce-docker-postgresql-makefile-poetry-template --single-branch https://github.com/BeeCont/django-project-templates.git
+```
 
-1. Clone the template repository to your local machine:
-    ```bash
-    git clone --branch branch_name --single-branch https://github.com/username/repo.git
-    cd template-repo
-    ```
+2. **Install Dependencies**
 
-### 3. Update Remote Origin
+   - Install Poetry if it's not already installed:
+      ```bash
+      curl -sSL https://install.python-poetry.org | python3 -
+      ```
+   - Then install the dependencies:
+      ```bash
+      poetry install
+      ```
+   
+3. **Configure the Environment**
 
-1. Remove the existing remote reference:
-    ```bash
-    git remote remove origin
-    ```
+   - Create an env file based on env_example:
+      ```bash
+      POSTGRES_DB=my_database
+      POSTGRES_USER=my_user
+      POSTGRES_PASSWORD=my_password
+      POSTGRES_PORT=5432
+      POSTGRES_HOST=postgres
+      DJANGO_PORT=8000
+      DJANGO_SECRET_KEY=mysecretkey
+      ```
 
-2. Add your new repository as the remote origin:
-    ```bash
-    git remote add origin https://github.com/your-username/new-repo.git
-    ```
+4. **Run the Project**
 
-### 4. Push to Your New Repository
+   - Build and run the project using Docker Compose:
+      ```bash
+      #Using a Makefile
+      make app
 
-1. Push the local repository to your new GitHub repository:
-    ```bash
-    git push -u origin main
-    ```
+      #Without Makefile
+      docker compose -f docker_compose/app.yaml -f docker_compose/storages.yaml --env-file env/.env  up --build -d
+      ```
 
-### 5. Switch to the Appropriate Branch
+## Using Makefile
 
-1. If you need to use a specific branch for a template:
-    ```bash
-    git checkout -b new-branch-name
-    git push -u origin new-branch-name
-    ```
+**Implemented Commands**
 
-## Available Templates
+* `make app` - up application and database/infrastructure
+* `make app-logs` - follow the logs in app container
+* `make app-down` - down application and all infrastructure
+* `make storages` - up only storages. you should run your application locally for debugging/developing purposes
+* `make storages-logs` - foolow the logs in storages containers
+* `make storages-down` - down all infrastructure
+* `postgres` - сonnect to the database
 
-Here is a list of available templates, along with their descriptions:
+**Most Used Django Specific Commands**
 
-### Main Branch
-- **Basic Django Project**: A minimal Django project setup.
-
-### ecommerce-microservice-docker-postgres-poetry-restapi
-- **E-commerce Microservice**: A template for an e-commerce site using microservices architecture with Docker, PostgreSQL, Makefile, Poetry, and REST API.
-
-<!--## Contributing
-
-We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) to learn how you can contribute to this repository.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-Feel free to reach out if you have any questions or need assistance:
-
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **GitHub**: [your-username](https://github.com/your-username)
-
-Happy coding!
--->
+* `make migrations` - make migrations to models
+* `make migrate` - apply all made migrations
+* `make collectstatic` - collect static
+* `make superuser` - create admin user
